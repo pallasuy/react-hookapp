@@ -47,40 +47,52 @@ export const TodoApp = () => {
 
 
     const handleDeleteTodo = (id) => {
-     
+
         const action = {
-              type: '[TODO] Remove',
-              payload: id
-          }
-  
-          dispatch(action);
-      } 
+            type: '[TODO] Remove',
+            payload: id
+        }
 
-        return (
-            <>
-                <h1>TodoApp: 10, <small>pendientes: 2</small></h1>
-                <hr />
-
-                <div className="row">
-                    <div className="col-7">
-
-                        {/* TodoList */}
-                        <TodoList todos={todos} onDeleteTodo={handleDeleteTodo} />
-                        {/* Fin TodoList */}
-                    </div>
-                    <div className="col-5">
-
-                        <h4>Agregar TODO</h4>
-                        <hr />
-                        {/* TodoAdd  onNewTodo (todo) */}
-                        <TodoAdd onNewTodo={handleNewTodo} /> {/* (newTodo) => handleNewTodo(newTodo) */}
-                        {/* Fin TodoAdd */}
-                    </div>
-                </div>
-
-
-
-            </>
-
-        )
+        dispatch(action);
     }
+
+    const handleToggleTodo = (id) => {
+        const action = {
+            type: '[TODO] Toggle',
+            payload: id
+        }
+
+        dispatch(action);
+    }
+
+    return (
+        <>
+            <h1>TodoApp: 10, <small>pendientes: 2</small></h1>
+            <hr />
+
+            <div className="row">
+                <div className="col-7">
+
+                    {/* TodoList */}
+                    <TodoList todos={todos}
+                        onDeleteTodo={handleDeleteTodo}
+                        onToggleTodo={handleToggleTodo}
+                    />
+                    {/* Fin TodoList */}
+                </div>
+                <div className="col-5">
+
+                    <h4>Agregar TODO</h4>
+                    <hr />
+                    {/* TodoAdd  onNewTodo (todo) */}
+                    <TodoAdd onNewTodo={handleNewTodo} /> {/* (newTodo) => handleNewTodo(newTodo) */}
+                    {/* Fin TodoAdd */}
+                </div>
+            </div>
+
+
+
+        </>
+
+    )
+}
